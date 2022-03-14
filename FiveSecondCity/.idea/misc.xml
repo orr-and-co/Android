@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.332" />
-        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_article_preview.xml" value="0.75" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_preferences.xml" value="0.25" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_settings.xml" value="0.36685773840541946" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_video.xml" value="0.36685773840541946" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/rv_child_number.xml" value="0.5" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/menu/bottom_nav.xml" value="0.33" />
       </map>
     </option>
