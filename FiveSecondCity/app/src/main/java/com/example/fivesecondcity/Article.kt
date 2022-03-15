@@ -6,5 +6,7 @@ data class Article(
     val published_at: Double, // Not sure about the datatype here
     val image: String,
     val title: String,
-    val content: String
+    val content: String,
+    val followup: String,
+    val link: String
 )

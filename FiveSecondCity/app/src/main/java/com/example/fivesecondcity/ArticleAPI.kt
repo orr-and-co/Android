@@ -4,16 +4,20 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 const val BASE_URL = "https://cardiff.jellypro.xyz/api/v1/"
 
-interface ArticleAPI{
+interface ArticleAPI {
 
     @GET("posts/recent")
-    fun getArticles() : Call<List<Article>>
+    fun getArticles(): Call<List<Article>>
+
+    @GET("posts/{id}")
+    fun getArticle(@Path(value = "id", encoded = true) id: Int): Call<Article>
 
     companion object {
-        operator fun invoke() : ArticleAPI{
+        operator fun invoke(): ArticleAPI {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -22,3 +26,7 @@ interface ArticleAPI{
         }
     }
 }
+
+data class IDRequest(
+    val id: Int
+)

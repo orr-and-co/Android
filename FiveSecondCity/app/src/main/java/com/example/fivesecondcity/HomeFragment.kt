@@ -1,5 +1,6 @@
 package com.example.fivesecondcity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,10 +14,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val ID_VAL = "com.example.fivesecondcity.ArticleID"
 
 class HomeFragment : Fragment() {
 
-    private lateinit var viewModel : ArticleViewModel
+    private lateinit var viewModel: ArticleViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +39,8 @@ class HomeFragment : Fragment() {
         fetchArticles()
     }
 
-   private fun fetchArticles()
-   {
-       refreshLayout.isRefreshing = true
+    private fun fetchArticles() {
+        refreshLayout.isRefreshing = true
 
         ArticleAPI().getArticles().enqueue(object : Callback<List<Article>> {
             override fun onFailure(call: Call<List<Article>>, t: Throwable) {
@@ -51,15 +52,15 @@ class HomeFragment : Fragment() {
                 refreshLayout.isRefreshing = false
                 val articlePreviews = response.body()
 
-                articlePreviews?.let{
+                articlePreviews?.let {
                     showPreviews(it)
                 }
             }
         })
-   }
+    }
 
     private fun showPreviews(previews: List<Article>) {
         recyclerViewArticles.layoutManager = LinearLayoutManager(activity)
-        recyclerViewArticles.adapter = ArticleAdapter(previews)
+        recyclerViewArticles.adapter = context?.let { ArticleAdapter(previews, it) }
     }
 }
