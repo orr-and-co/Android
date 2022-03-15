@@ -10,8 +10,8 @@
         android:title="Videos"
         android:icon="@drawable/ic_baseline_videocam_24"/>
     <item
-        android:id="@+id/preferencesFragment"
-        android:title="Preferences"
+        android:id="@+id/interestsFragment"
+        android:title="Interests"
         android:icon="@drawable/ic_baseline_person_24"/>
     <item
         android:id="@+id/settingsFragment"

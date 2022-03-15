@@ -16,13 +16,13 @@
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
     <fragment
+        android:id="@+id/interestsFragment"
+        android:name="com.example.fivesecondcity.InterestsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_interests" />
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.fivesecondcity.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/preferencesFragment"
-        android:name="com.example.fivesecondcity.preferencesFragment"
-        android:label="fragment_preferences"
-        tools:layout="@layout/fragment_preferences" />
 </navigation>
