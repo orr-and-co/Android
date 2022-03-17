@@ -6,8 +6,12 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.google.android.material.navigation.NavigationView
+import io.noties.markwon.Markwon
+import io.noties.markwon.ext.strikethrough.StrikethroughPlugin
+import io.noties.markwon.ext.tables.TablePlugin
+import io.noties.markwon.ext.tasklist.TaskListPlugin
+import io.noties.markwon.image.ImagesPlugin
+import io.noties.markwon.linkify.LinkifyPlugin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,9 +38,15 @@ class ArticleActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
 
                 if (article != null) {
-                    val textView = findViewById<TextView>(R.id.textView).apply {
-                        text = article.content
-                    }
+                    val markwon = Markwon.builder(applicationContext)
+                        .usePlugin(StrikethroughPlugin.create())
+                        .usePlugin(ImagesPlugin.create())
+                        .usePlugin(LinkifyPlugin.create())
+                        .usePlugin(TablePlugin.create(applicationContext))
+                        .usePlugin(TaskListPlugin.create(applicationContext))
+                        .build()
+                    markwon.setMarkdown(findViewById<TextView>(R.id.textView), article.content)
+
                     actionBar?.title = article.title
                     supportActionBar?.title = article.title
                 }
