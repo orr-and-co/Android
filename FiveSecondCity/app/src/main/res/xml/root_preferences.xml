@@ -2,11 +2,11 @@
 
     <PreferenceCategory app:title="General">
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="Remove me"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="Test Name"/>
+        <SwitchPreference
+            app:key="language"
+            app:title="Welsh"
+            app:summaryOff="Switch to Welsh"
+            app:summaryOn="Revert to the Queen's English. May God smile favourably upon you."/>
 
         <ListPreference
             app:entries="@array/theme_entries"
@@ -18,19 +18,15 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Notifictions">
+    <PreferenceCategory app:title="Notifications">
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title"
-            app:defaultValue="false"/>
-
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+        <ListPreference
+            app:entries="@array/notificationFrequency_entries"
+            app:entryValues="@array/notificationFrequency_values"
+            app:key="notificationFrequency"
+            app:title="Notification Frequency"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="daily"/>
 
     </PreferenceCategory>
 
