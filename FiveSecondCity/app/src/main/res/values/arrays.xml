@@ -1,0 +1,30 @@
+<resources>
+    <!-- Theme Preference -->
+    <string-array name="theme_entries">
+        <item>System Default Theme</item>
+        <item>Light Theme</item>
+        <item>Dark Theme</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+
+    <string-array name="notificationFrequency_entries">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Fortnightly</item>
+        <item>Monthly</item>
+        <item>Never</item>
+    </string-array>
+
+    <string-array name="notificationFrequency_values">
+        <item>daily</item>
+        <item>weekly</item>
+        <item>fortnightly</item>
+        <item>monthly</item>
+        <item>never</item>
+    </string-array>
+</resources>

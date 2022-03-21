@@ -1,0 +1,33 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="General">
+
+        <SwitchPreference
+            app:key="language"
+            app:title="Welsh"
+            app:summaryOff="Switch to Welsh"
+            app:summaryOn="Revert to the Queen's English. May God smile favourably upon you."/>
+
+        <ListPreference
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:key="theme"
+            app:title="Theme"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="system"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Notifications">
+
+        <ListPreference
+            app:entries="@array/notificationFrequency_entries"
+            app:entryValues="@array/notificationFrequency_values"
+            app:key="notificationFrequency"
+            app:title="Notification Frequency"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="daily"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

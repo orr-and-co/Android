@@ -23,6 +23,5 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.fivesecondcity.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:label="fragment_settings" />
 </navigation>
