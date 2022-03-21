@@ -1,35 +1,37 @@
 package com.example.fivesecondcity
 
-import android.app.UiModeManager.MODE_NIGHT_NO
-import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.os.Bundle
-import androidx.preference.Preference
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
 
 // TODO: Hook these bad boys up
 
-class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
         val pref = findPreference<ListPreference>("theme")
-        // TODO: Set listener
-    }
-
-
-    override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        if (preference.key == "theme")
-        {
-            if (newValue == "light")
-            {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        val changeListener =
+            Preference.OnPreferenceChangeListener { preference, newValue ->
+                if (preference.key == "theme") {
+                    when (newValue) {
+                        "system" -> {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                        }
+                        "light" -> {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        }
+                        "dark" -> {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        }
+                    }
+                }
+                true
             }
+        if (pref != null) {
+            pref.setOnPreferenceChangeListener(changeListener)
         }
-        return true
     }
 }
