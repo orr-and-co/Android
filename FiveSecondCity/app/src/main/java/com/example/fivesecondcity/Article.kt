@@ -4,7 +4,7 @@ package com.example.fivesecondcity
 data class Article(
     val id: Int,
     val published_at: Double, // Not sure about the datatype here
-    val image: String,
+    val preview: String,
     val title: String,
     val content: String,
     val followup: String,
