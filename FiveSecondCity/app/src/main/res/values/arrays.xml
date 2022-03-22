@@ -1,9 +1,9 @@
 <resources>
     <!-- Theme Preference -->
     <string-array name="theme_entries">
-        <item>System Default Theme</item>
-        <item>Light Theme</item>
-        <item>Dark Theme</item>
+        <item>@string/system</item>
+        <item>@string/light</item>
+        <item>@string/dark</item>
     </string-array>
 
     <string-array name="theme_values">
@@ -12,12 +12,13 @@
         <item>dark</item>
     </string-array>
 
+    <!-- Notification Preference -->
     <string-array name="notificationFrequency_entries">
-        <item>Daily</item>
-        <item>Weekly</item>
-        <item>Fortnightly</item>
-        <item>Monthly</item>
-        <item>Never</item>
+        <item>@string/daily</item>
+        <item>@string/weekly</item>
+        <item>@string/fortnightly</item>
+        <item>@string/monthly</item>
+        <item>@string/never</item>
     </string-array>
 
     <string-array name="notificationFrequency_values">

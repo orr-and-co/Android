@@ -4,7 +4,7 @@
 
         <SwitchPreference
             app:key="language"
-            app:title="Welsh"
+            app:title="Language"
             app:summaryOff="Switch to Welsh"
             app:summaryOn="Revert to the Queen's English. May God smile favourably upon you."/>
 

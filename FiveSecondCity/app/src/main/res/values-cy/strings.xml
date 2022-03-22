@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dinas Deg Eiliad</string>
+    <string name="hello_blank_fragment">Change Fragment Text</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+
+    <!-- Preferences Strings -->
+    <string name="general">Gosodiadau</string>
+
+    <string name="language">Ieithoedd</string>
+    <string name="languageSummaryOff">Newid I Cymraeg</string>
+    <string name="languageSummaryOn">Newid I Saesneg</string>
+
+    <string name="theme">Thema</string>
+
+    <string name="notifications">Hysbysiadau</string>
+    <string name="notificationFrequency">Almder Hysbysiadau</string>
+
+    <!-- Array Data -->
+    <string name="system">Rhagosodiad Thema System</string>
+    <string name="light">Thema Golau</string>
+    <string name="dark">Thema Dyddiol</string>
+
+    <string name="daily">Dyddiol</string>
+    <string name="weekly">Wythnosol</string>
+    <string name="fortnightly">Pythefnosol</string>
+    <string name="monthly">Misol</string>
+    <string name="never">Byth</string>
+</resources>
