@@ -1,14 +1,11 @@
 package com.example.fivesecondcity
 
-import android.content.Context
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 import java.util.*
 
 
@@ -18,42 +15,37 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        val pref = findPreference<ListPreference>("theme")
-        val changeListener =
-            Preference.OnPreferenceChangeListener { preference, newValue ->
-                if (preference.key == "theme") {
-                    when (newValue) {
-                        "system" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                        }
-                        "light" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        }
-                        "dark" -> {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        }
+
+        val themeListener =
+            Preference.OnPreferenceChangeListener { _, newValue ->
+                when (newValue) {
+                    "system" -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                     }
-                }
-                else if(preference.key == "language")
-                {
-                    val res: Resources = context?.getResources()!!
-                    val dm: DisplayMetrics = res.getDisplayMetrics()
-                    val conf: Configuration = res.getConfiguration()
-                    if(newValue == "true")
-                    {
-                        conf.locale = Locale("cy")
-                        res.updateConfiguration(conf, dm)
+                    "light" -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     }
-                    else
-                    {
-                        conf.locale = Locale("en")
-                        res.updateConfiguration(conf, dm)
+                    "dark" -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     }
                 }
                 true
             }
-        if (pref != null) {
-            pref.setOnPreferenceChangeListener(changeListener)
-        }
+        // TODO: Fix Locale
+        val langListener =
+            Preference.OnPreferenceChangeListener { _, newValue ->
+                when (newValue) {
+                    true -> {
+                        activity?.let { LocaleHandler.setLocale(it, "cy") }
+                    }
+                    false -> {
+                        activity?.let { LocaleHandler.setLocale(it, "en") }
+                    }
+                }
+                true
+            }
+
+        findPreference<ListPreference>("theme")?.onPreferenceChangeListener = themeListener
+        findPreference<SwitchPreference>("language")?.onPreferenceChangeListener = langListener
     }
 }

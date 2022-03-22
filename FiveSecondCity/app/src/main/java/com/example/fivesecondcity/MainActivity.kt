@@ -1,11 +1,14 @@
 package com.example.fivesecondcity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
-import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +35,9 @@ class MainActivity : AppCompatActivity() {
         {
             bottomNavigationView.selectedItemId = R.id.homeFragment;
         }
+    }
+
+    public fun Wales(){
+        LocaleHandler.setLocale(this, "cy")
     }
 }
