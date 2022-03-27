@@ -50,6 +50,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     implementation 'io.noties.markwon:core:4.6.2'
     implementation 'io.noties.markwon:ext-strikethrough:4.6.2'
