@@ -26,7 +26,7 @@ class ArticleAdapter(val articles: List<Article>, val context: Context) :
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = articles[position]
         holder.view.textViewTitle.text = article.title
-        holder.view.textViewContent.text = article.content
+        holder.view.textViewContent.text = article.short_content
 
         try {
             val decodedString: ByteArray = Base64.decode(article.preview, Base64.DEFAULT)

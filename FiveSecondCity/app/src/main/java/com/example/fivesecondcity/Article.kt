@@ -7,6 +7,7 @@ data class Article(
     val preview: String,
     val title: String,
     val content: String,
+    val short_content: String,
     val followup: String,
     val link: String
 )
