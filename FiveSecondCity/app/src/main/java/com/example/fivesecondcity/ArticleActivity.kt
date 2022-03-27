@@ -10,6 +10,7 @@ import io.noties.markwon.Markwon
 import io.noties.markwon.ext.strikethrough.StrikethroughPlugin
 import io.noties.markwon.ext.tables.TablePlugin
 import io.noties.markwon.ext.tasklist.TaskListPlugin
+import io.noties.markwon.html.HtmlPlugin
 import io.noties.markwon.image.ImagesPlugin
 import io.noties.markwon.linkify.LinkifyPlugin
 import retrofit2.Call
@@ -42,10 +43,11 @@ class ArticleActivity : AppCompatActivity() {
                         .usePlugin(StrikethroughPlugin.create())
                         .usePlugin(ImagesPlugin.create())
                         .usePlugin(LinkifyPlugin.create())
+                        .usePlugin(HtmlPlugin.create())
                         .usePlugin(TablePlugin.create(applicationContext))
                         .usePlugin(TaskListPlugin.create(applicationContext))
                         .build()
-                    markwon.setMarkdown(findViewById<TextView>(R.id.textView), article.content)
+                    markwon.setMarkdown(findViewById<TextView>(R.id.textView), article.content.replace("\n", "\n\n"))
 
                     actionBar?.title = article.title
                     supportActionBar?.title = article.title
