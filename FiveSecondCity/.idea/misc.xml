@@ -11,6 +11,8 @@
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/activity_article.xml" value="0.33" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_article_preview.xml" value="0.75" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_filtered_feed.xml" value="0.30085470085470084" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_full_feed.xml" value="0.15427350427350428" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_interest_button.xml" value="0.33" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_interests.xml" value="0.5615171137835338" />

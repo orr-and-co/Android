@@ -1,66 +1,59 @@
 package com.example.fivesecondcity
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_home.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+
 
 const val ID_VAL = "com.example.fivesecondcity.ArticleID"
 
 class HomeFragment : Fragment() {
 
-    private lateinit var viewModel: ArticleViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ArticleViewModel::class.java)
 
-        refreshLayout.setOnRefreshListener {
-            fetchArticles()
+        val viewPager = view.findViewById<ViewPager2>(R.id.viewPager)
+        viewPager.adapter = FragmentAdapter(this)
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
+        val mediator = TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = position.toString()
+        }.attach()
+    }
+
+    class FragmentAdapter : FragmentStateAdapter
+    {
+        constructor(fragmentActivity: FragmentActivity?) : super(fragmentActivity!!) {}
+        constructor(fragment: Fragment?) : super(fragment!!) {}
+        constructor(fragmentManager: FragmentManager?, lifecycle: Lifecycle?) : super(
+            fragmentManager!!,
+            lifecycle!!
+        ) {}
+
+        override fun getItemCount(): Int {
+            return 2
         }
 
-        fetchArticles()
-    }
+        override fun createFragment(position: Int): Fragment {
+            if(position == 0)
+                return VideoFragment()
+            return FullFeedFragment()
+        }
 
-    private fun fetchArticles() {
-        refreshLayout.isRefreshing = true
-
-        ArticleAPI().getArticles().enqueue(object : Callback<List<Article>> {
-            override fun onFailure(call: Call<List<Article>>, t: Throwable) {
-                refreshLayout.isRefreshing = false
-                Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(call: Call<List<Article>>, response: Response<List<Article>>) {
-                refreshLayout.isRefreshing = false
-                val articlePreviews = response.body()
-
-                articlePreviews?.let {
-                    showPreviews(it)
-                }
-            }
-        })
-    }
-
-    private fun showPreviews(previews: List<Article>) {
-        recyclerViewArticles.layoutManager = LinearLayoutManager(activity)
-        recyclerViewArticles.adapter = context?.let { ArticleAdapter(previews, it) }
     }
 }
