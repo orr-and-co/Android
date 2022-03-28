@@ -1,10 +1,11 @@
 package com.example.fivesecondcity
-import androidx.recyclerview.widget.RecyclerView
-import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.widget.VideoView
-import android.widget.TextView
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.VideoView
+import androidx.recyclerview.widget.RecyclerView
 
 class VideoAdapter(var videoList: List<Video>) : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
@@ -21,13 +22,18 @@ class VideoAdapter(var videoList: List<Video>) : RecyclerView.Adapter<VideoAdapt
     }
 
     class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var videoView: VideoView = itemView.findViewById(R.id.VideoView)
+        private var videoView: VideoView = itemView.findViewById(R.id.VideoView)
         var title: TextView = itemView.findViewById(R.id.video_title)
-        var desc: TextView = itemView.findViewById(R.id.video_desc)
+        private var desc: TextView = itemView.findViewById(R.id.video_desc)
+        private var playButton: ImageView = itemView.findViewById(R.id.playButton)
+
+
+
         fun setVideoData(video: Video) {
             title.text = video.title
             desc.text = video.desc
             videoView.setVideoPath(video.videoUrl)
+            playButton.visibility = View.GONE
             videoView.setOnPreparedListener { mediaPlayer ->
                 mediaPlayer.start()
                 val videoRatio = mediaPlayer.videoWidth / mediaPlayer.videoHeight
@@ -40,6 +46,20 @@ class VideoAdapter(var videoList: List<Video>) : RecyclerView.Adapter<VideoAdapt
                     videoView.scaleY = 1f / scale
                 }
             }
+
+            videoView.setOnClickListener {
+
+                if (videoView.isPlaying) {
+                    videoView.pause()
+                    playButton.visibility = View.VISIBLE
+                } else {
+                    videoView.start()
+                    playButton.visibility = View.GONE
+                }
+            }
+
+
+
             videoView.setOnCompletionListener { mediaPlayer -> mediaPlayer.start() }
         }
 
