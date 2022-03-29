@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
@@ -86,13 +87,33 @@ class HomeFragment : Fragment() {
 
     private fun showPreviews() {
         recyclerViewArticles.layoutManager = LinearLayoutManager(activity)
+        val interestMessage = view?.findViewById<TextView>(R.id.textView)
         if (isFiltered) {
-            recyclerViewArticles.adapter = context?.let {
-                ArticleAdapter(articlePreviews.filter { article ->
-                    article.interests.any(interestStrings::contains)
-                }, it)
+            if(interestStrings.isEmpty())
+            {
+                if (interestMessage != null) {
+                    interestMessage.visibility = View.VISIBLE
+                }
+                recyclerViewArticles.adapter = context?.let {
+                    ArticleAdapter(emptyList(), it)
+                }
             }
-        } else
+            else
+            {
+                if (interestMessage != null) {
+                    interestMessage.visibility = View.GONE
+                }
+                recyclerViewArticles.adapter = context?.let {
+                    ArticleAdapter(articlePreviews.filter { article ->
+                        article.interests.any(interestStrings::contains)
+                    }, it)
+                }
+            }
+        } else {
+            if (interestMessage != null) {
+                interestMessage.visibility = View.GONE
+            }
             recyclerViewArticles.adapter = context?.let { ArticleAdapter(articlePreviews, it) }
+        }
     }
 }
