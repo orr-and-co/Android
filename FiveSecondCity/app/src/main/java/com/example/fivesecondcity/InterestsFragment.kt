@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_interests.*
 
 class InterestsFragment : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -22,35 +21,34 @@ class InterestsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
-        val view =  inflater.inflate(R.layout.fragment_interests, container, false)
-        if(preferences != null)
-        {
-                        view.findViewById<Button>(R.id.buttonEvents).setOnClickListener(){
+        val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
+        val view = inflater.inflate(R.layout.fragment_interests, container, false)
+        if (preferences != null) {
+            view.findViewById<Button>(R.id.buttonEvents).setOnClickListener() {
                 negateButton(preferences, "InterestEvents", cardEvents)
             }
-            view.findViewById<Button>(R.id.buttonCrime).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonCrime).setOnClickListener() {
                 negateButton(preferences, "InterestCrime", cardCrime)
             }
-            view.findViewById<Button>(R.id.buttonEducation).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonEducation).setOnClickListener() {
                 negateButton(preferences, "InterestEducation", cardEducation)
             }
-            view.findViewById<Button>(R.id.buttonEnvironment).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonEnvironment).setOnClickListener() {
                 negateButton(preferences, "InterestEnvironment", cardEnvironment)
             }
-            view.findViewById<Button>(R.id.buttonHealth).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonHealth).setOnClickListener() {
                 negateButton(preferences, "InterestHealth", cardHealth)
             }
-            view.findViewById<Button>(R.id.buttonHomelessness).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonHomelessness).setOnClickListener() {
                 negateButton(preferences, "InterestHomelessness", cardHomelessness)
             }
-            view.findViewById<Button>(R.id.buttonRights).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonRights).setOnClickListener() {
                 negateButton(preferences, "InterestRights", cardRights)
             }
-            view.findViewById<Button>(R.id.buttonCampaigns).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonCampaigns).setOnClickListener() {
                 negateButton(preferences, "InterestCampaigns", cardCampaigns)
             }
-            view.findViewById<Button>(R.id.buttonMentalHealth).setOnClickListener(){
+            view.findViewById<Button>(R.id.buttonMentalHealth).setOnClickListener() {
                 negateButton(preferences, "InterestMentalHealth", cardMentalHealth)
             }
         }
@@ -74,20 +72,24 @@ class InterestsFragment : Fragment() {
         }
     }
 
-    private fun negateButton(preferences : SharedPreferences, key: String, card: CardView)
-    {
+    private fun negateButton(preferences: SharedPreferences, key: String, card: CardView) {
         val currVal = preferences.getBoolean(key, false)
         preferences.edit().putBoolean(key, !currVal).apply()
-        if(currVal)
+        if (currVal)
+        {
+            interestStrings.remove(interestMap[key])
             card.setCardBackgroundColor(resources.getColor(R.color.blue_light))
+        }
         else
+        {
+            interestMap[key]?.let { interestStrings.add(it) }
             card.setCardBackgroundColor(resources.getColor(R.color.blue_dark))
+        }
     }
 
-    private fun setButton(preferences : SharedPreferences, key: String, card: CardView)
-    {
+    private fun setButton(preferences: SharedPreferences, key: String, card: CardView) {
         val currVal = preferences.getBoolean(key, false)
-        if(currVal)
+        if (currVal)
             card.setCardBackgroundColor(resources.getColor(R.color.blue_dark))
         else
             card.setCardBackgroundColor(resources.getColor(R.color.blue_light))

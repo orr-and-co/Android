@@ -1,14 +1,17 @@
 package com.example.fivesecondcity
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,24 +22,48 @@ const val ID_VAL = "com.example.fivesecondcity.ArticleID"
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: ArticleViewModel
+    private lateinit var articlePreviews: List<Article>
+    private var isFiltered = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Make list of API interest strings for the currently selected interests
+        val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
+//        if (preferences != null) {
+//            interestStrings = interestsMap.filter { (key, _) -> preferences.getBoolean(key, false)}.values as List<String>
+//        }
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ArticleViewModel::class.java)
+        isFiltered = false
 
+        // Get articles
+        viewModel = ViewModelProvider(this)[ArticleViewModel::class.java]
         refreshLayout.setOnRefreshListener {
             fetchArticles()
         }
-
         fetchArticles()
+
+        // Show only the ones that ought to be shown
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
+        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                if (tab.position == 0) {
+                    isFiltered = false
+                    showPreviews()
+                } else {
+                    isFiltered = true
+                    showPreviews()
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
     }
 
     private fun fetchArticles() {
@@ -50,17 +77,22 @@ class HomeFragment : Fragment() {
 
             override fun onResponse(call: Call<List<Article>>, response: Response<List<Article>>) {
                 refreshLayout.isRefreshing = false
-                val articlePreviews = response.body()
+                articlePreviews = response.body()!!
 
-                articlePreviews?.let {
-                    showPreviews(it)
-                }
+                showPreviews()
             }
         })
     }
 
-    private fun showPreviews(previews: List<Article>) {
+    private fun showPreviews() {
         recyclerViewArticles.layoutManager = LinearLayoutManager(activity)
-        recyclerViewArticles.adapter = context?.let { ArticleAdapter(previews, it) }
+        if (isFiltered) {
+            recyclerViewArticles.adapter = context?.let {
+                ArticleAdapter(articlePreviews.filter { article ->
+                    article.interests.any(interestStrings::contains)
+                }, it)
+            }
+        } else
+            recyclerViewArticles.adapter = context?.let { ArticleAdapter(articlePreviews, it) }
     }
 }
