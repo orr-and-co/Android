@@ -8,16 +8,14 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import java.util.ArrayList
 
-
 class VideoFragment : Fragment() {
-    private var viewPager2: ViewPager2? = null
-    private var videoList: MutableList<Video>? = null
-
+    private lateinit var viewPager: ViewPager2
+    private lateinit var videoList: MutableList<Video>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         videoList = ArrayList()
-        viewPager2 = view.findViewById(R.id.viewPager2)
+        viewPager = view.findViewById(R.id.viewPager2)
 
         (videoList as ArrayList<Video>).add(
             Video(
@@ -34,12 +32,7 @@ class VideoFragment : Fragment() {
             )
         )
         val adapter = VideoAdapter(videoList as ArrayList<Video>)
-        viewPager2?.adapter = adapter
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+        viewPager.adapter = adapter
     }
 
     override fun onCreateView(
