@@ -6,13 +6,15 @@
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable-anydpi/ic_play_button.xml" value="0.3265" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3265" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.332" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.3265" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3265" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/drawable/ic_logo.xml" value="0.3265" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/activity_article.xml" value="0.33" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_article_preview.xml" value="0.75" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_interests.xml" value="0.36666666666666664" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_interest_button.xml" value="0.33" />
+        <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_interests.xml" value="0.5615171137835338" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_preferences.xml" value="0.25" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_settings.xml" value="0.36685773840541946" />
         <entry key="..\:/ESP/Android/FiveSecondCity/app/src/main/res/layout/fragment_video.xml" value="0.36685773840541946" />

@@ -8,6 +8,7 @@ data class Article(
     val title: String,
     val content: String,
     val short_content: String,
+    val interests: List<String>,
     val followup: String,
     val link: String
 )
