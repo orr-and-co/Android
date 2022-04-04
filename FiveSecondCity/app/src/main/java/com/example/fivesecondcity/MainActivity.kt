@@ -11,7 +11,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // Maps the Preferences Strings to the API Strings for the Interests
-val interestMap = mapOf("InterestCrime" to "crime")
+val interestMap = mapOf("InterestCrime" to "crime", "InterestEvents" to "culture",
+    "InterestEducation" to "education", "InterestEnvironment" to "environment")
 val interestStrings = mutableListOf<String>()
 
 class MainActivity : AppCompatActivity() {
