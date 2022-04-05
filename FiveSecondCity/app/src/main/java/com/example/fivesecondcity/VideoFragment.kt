@@ -19,16 +19,23 @@ class VideoFragment : Fragment() {
 
         (videoList as ArrayList<Video>).add(
             Video(
-                "android.resource://" + requireContext().packageName + "/" + R.raw.vone,
-                "New Title 1",
-                "A description"
+                "android.resource://" + requireContext().packageName + "/" + R.raw.videotwo,
+                "New Llanelli School",
+                "We discuss the council's controversial £9.1 plans for a new school in the Llanarch area"
             )
         )
         (videoList as ArrayList<Video>).add(
             Video(
-                "android.resource://" + requireContext().packageName + "/" + R.raw.vtwo,
-                "New Title 2",
-                "A description"
+                "android.resource://" + requireContext().packageName + "/" + R.raw.videoone,
+                "New Housing Development",
+                "The council's plans for a new housing development in Trowbridge"
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.videothree,
+                "Flood Defence Update",
+                "New flood defences to be added to the bank of the river Ely after flood destruction"
             )
         )
         val adapter = VideoAdapter(videoList as ArrayList<Video>)
