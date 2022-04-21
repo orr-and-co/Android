@@ -19,25 +19,63 @@ class VideoFragment : Fragment() {
 
         (videoList as ArrayList<Video>).add(
             Video(
-                "android.resource://" + requireContext().packageName + "/" + R.raw.videotwo,
-                "New Llanelli School",
-                "We discuss the council's controversial £9.1 plans for a new school in the Llanarch area"
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vonecamhs,
+                "CAMHS Lockdown Report",
+                "CAMHS have published a report showing the effects of lockdown on young people."
             )
         )
         (videoList as ArrayList<Video>).add(
             Video(
-                "android.resource://" + requireContext().packageName + "/" + R.raw.videoone,
-                "New Housing Development",
-                "The council's plans for a new housing development in Trowbridge"
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vtwocyclerecycle,
+                "Cycle & Recycle",
+                "Primary schools in Cardiff are ending their trials of the Cycle & Recycle program, teachers say the program was a great success."
             )
         )
         (videoList as ArrayList<Video>).add(
             Video(
-                "android.resource://" + requireContext().packageName + "/" + R.raw.videothree,
-                "Flood Defence Update",
-                "New flood defences to be added to the bank of the river Ely after flood destruction"
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vthreetrams,
+                "Installation of Tram Line around the edge of Cardiff",
+                "The council’s plan is to introduce a new tramline that would circumnavigate the city."
             )
         )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vfourpoliceofficers,
+                "Additional funding to South Wales Police",
+                "South Wales Police Force is receiving an additional £350,000, this move will allow them to hire 10 additional officers to patrol Cardiff’s streets."
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vfivestdavids,
+                "Shutting down St David’s Centre for Earth Day",
+                "The council is proposing to shut down St David’s Centre for a day as a symbolic gesture to tackle growing consumerism."
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vsixeducation,
+                "Education board 10 year plan",
+                "The Education Development Board is working on the next phase of its 10 year plan and wants young people’s opinions."
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vsevenrugby,
+                "Rugby Festival for World Cup Victory",
+                "Following their victory in the Rugby World Cup, the Welsh Rugby Union will be hosting a weeklong celebration at their headquarters on Maven Road."
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.veighthomeless,
+                "Ending the Homeless Hotel Scheme",
+                "Following the reopening of most major services in Cardiff, the council has decided to end the Homeless Hotel Scheme, in which the hotels were paid a discounted rate to house homeless people."
+            )
+        )
+
+
+
         val adapter = VideoAdapter(videoList as ArrayList<Video>)
         viewPager.adapter = adapter
     }
