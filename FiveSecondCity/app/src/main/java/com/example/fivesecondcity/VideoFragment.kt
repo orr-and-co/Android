@@ -47,6 +47,13 @@ class VideoFragment : Fragment() {
         )
         (videoList as ArrayList<Video>).add(
             Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.velevenmental,
+                "",
+                ""
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
                 "android.resource://" + requireContext().packageName + "/" + R.raw.vfivestdavids,
                 "Shutting down St David’s Centre for Earth Day",
                 "The council is proposing to shut down St David’s Centre for a day as a symbolic gesture to tackle growing consumerism."
@@ -61,9 +68,16 @@ class VideoFragment : Fragment() {
         )
         (videoList as ArrayList<Video>).add(
             Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vtensports,
+                "",
+                ""
+            )
+        )
+        (videoList as ArrayList<Video>).add(
+            Video(
                 "android.resource://" + requireContext().packageName + "/" + R.raw.vsevenrugby,
-                "Rugby Festival for World Cup Victory",
-                "Following their victory in the Rugby World Cup, the Welsh Rugby Union will be hosting a weeklong celebration at their headquarters on Maven Road."
+                "",
+                ""
             )
         )
         (videoList as ArrayList<Video>).add(
@@ -73,6 +87,14 @@ class VideoFragment : Fragment() {
                 "Following the reopening of most major services in Cardiff, the council has decided to end the Homeless Hotel Scheme, in which the hotels were paid a discounted rate to house homeless people."
             )
         )
+        (videoList as ArrayList<Video>).add(
+            Video(
+                "android.resource://" + requireContext().packageName + "/" + R.raw.vninecamera,
+                "",
+                ""
+            )
+        )
+
 
 
 
